@@ -1,0 +1,21 @@
+.todos {
+  border: 1px solid #666;
+  &-input-field {
+    padding: 10px;
+    input[type=text] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #666;
+    }
+  }
+  &-list {}
+  &-sorting {
+    &__count {}
+    &__filter {
+
+    }
+    &__clear-filter {
+
+    }
+  }
+}

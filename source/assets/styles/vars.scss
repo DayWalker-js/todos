@@ -1,0 +1,83 @@
+$baseFontSize: 16px;
+$baseFont: 'Helvetica';
+$AltFont: Tahoma, Verdana, Segoe, sans-serif;
+
+
+
+@mixin flex($display, $direction, $wrap, $justify, $align-items, $aligncontent ) {
+	display: $display;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+	justify-content: $justify;
+	align-content: $aligncontent;
+	align-items: $align-items;
+	& > * {
+		min-width: 0;
+	}
+}
+
+@mixin clearfix {
+	clear: both;
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin text-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin inlinelist {
+	font-size: 0;
+	line-height: 0;
+}
+
+@mixin inlinelistitem {
+	font-size: $baseFontSize;
+	line-height: normal;
+	display: inline-block;
+	vertical-align: top;
+}
+
+@mixin optional-at-root($sel) {
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+		@content;
+	}
+}
+
+@mixin placeholder {
+	@include optional-at-root('::-webkit-input-placeholder') {
+		@content;
+	}
+
+	@include optional-at-root(':-moz-placeholder') {
+		@content;
+	}
+
+	@include optional-at-root('::-moz-placeholder') {
+		@content;
+	}
+
+	@include optional-at-root(':-ms-input-placeholder') {
+		@content;
+	}
+}
+
+@mixin center {
+	width: 1200px;
+	padding: 0px;
+	margin: 0 auto;
+   	min-width: 320px;
+
+
+    @include main-desktop {
+	  width: auto;
+    }
+}
+
+
